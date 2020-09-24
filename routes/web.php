@@ -72,6 +72,8 @@ Route::get('/model', function(){
    */
 
    //criar uma categoria
+
+   /*
    \App\Category::create([
        'name' => 'Games',
        'Description' => null,
@@ -82,12 +84,30 @@ Route::get('/model', function(){
         'name' => 'Notebooks',
         'Description' => null,
         'slug' => 'notebooks',
-    ]);
+    ]);    
 
     return \App\Category::all();
 
+    */
+
    //adicionar um produto para uma serie categoria ou vice-versa
 
+   /*
+   $product = \App\Product::find(41);
+   dd($product->categories()->attach([4]));
 
     return \App\User::all();
+    */
+});
+
+
+Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
+    Route::prefix('stores')->name('stores.')->group(function(){
+        Route::get('/', 'StoreController@index')->name('index');
+        Route::get('/create', 'StoreController@create')->name('create');
+        Route::post('/store', 'StoreController@store')->name('store');
+        Route::get('/{store}/edit', 'StoreController@edit')->name('edit');
+        Route::post('/update/{store}', 'StoreController@update')->name('update');
+        Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy');
+    });
 });
