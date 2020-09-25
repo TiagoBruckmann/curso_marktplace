@@ -8,7 +8,8 @@
         <thead>
             <tr>
                 <th>Nome do produto</th>
-                <th>Price</th>
+                <th>Descrição</th>
+                <th>Preço</th>
                 <th>Ações</th>
             </tr>
         </thead>

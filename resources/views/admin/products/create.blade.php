@@ -34,7 +34,8 @@
 
         <div>
             <label>Lojas</label>
-            <select name="user" class="form-control">
+            <select name="store" class="form-control">
+            <option>Selecione uma loja</option>
                 @foreach($stores as $store)
                     <option value="{{ $store->id }}">{{ $store->name }}</option>
                 @endforeach
