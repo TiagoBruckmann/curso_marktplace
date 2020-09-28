@@ -18,10 +18,16 @@
                 <tr>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
-                    <td>{{ $product->price }}</td>
+                    <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
                     <td>
-                        <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}" class="btn btn-outline-info">Editar</a>
-                        <a href="{{ route('admin.products.destroy', ['product' => $product->id]) }}" class="btn btn-outline-danger" style="margin-left: 10px;">Excluir</a>
+                        <div class="btn-group">
+                            <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}" class="btn btn-outline-info" style="border=none; padding-rigth="><i class="fas fa-edit"></i></a>
+                            <form action="{{ route('admin.products.destroy', ['product' => $product->id]) }}" method="post" style="margin-left:10px;">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach

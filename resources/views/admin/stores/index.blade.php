@@ -16,13 +16,13 @@
                 <tr>
                     <td>{{ $store->name }}</td>
                     <td>
-                        <a href="{{ route('admin.stores.edit', ['store' => $store->id]) }}" class="btn btn-outline-info">Editar</a>
-                        <a href="{{ route('admin.stores.destroy', ['store' => $store->id]) }}" class="btn btn-outline-danger" style="margin-left: 10px;">Excluir</a>
+                        <a href="{{ route('admin.stores.edit', ['store' => $store->id]) }}" class="btn btn-outline-info"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('admin.stores.destroy', ['store' => $store->id]) }}" class="btn btn-outline-danger" style="margin-left: 10px;"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    <!-- exibir o numero das paginas --> 
+    <!-- exibir paginação --> 
     {{ $stores->links() }}
 @endsection
