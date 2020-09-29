@@ -10,6 +10,7 @@
                 <th>Nome do produto</th>
                 <th>Descrição</th>
                 <th>Preço</th>
+                <td>Loja</td>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -19,6 +20,7 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
                     <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
+                    <td>{{ $product->store->name }}</td>
                     <td>
                         <div class="btn-group">
                             <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}" class="btn btn-outline-info" style="border=none; padding-rigth="><i class="fas fa-edit"></i></a>
