@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Store;
 use App\Http\Requests\ProductRequest;
+use App\Traits\UploadTrait;
 
 class ProductController extends Controller
 {
+    use UploadTrait;
+ 
     private $product;
 
-    public function __constructor(Product $product)
+    public function __construct(Product $product)
     {
         $this->product = $product;
     }
@@ -51,15 +54,16 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->all();
+        $categories = $request->get('categories', null);
 
         //criando um produto para a loja do usuario autenticado
         $store = auth()->user()->store;
         $product = $store->products()->create($data);
 
-        $product->categories()->sync($data['categories']);
+        $product->categories()->sync($categories);
 
         if($request->hasFile('photos')){
-            $images = $this->imageUpload($request, 'image');
+            $images = $this->imageUpload($request->file('photos'), 'image');
 
             //inserção das imagens/referencia na base
             $product->photos()->createMany($images);
@@ -104,14 +108,16 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $product)
     {
         $data = $request->all();
+        $categories = $request->get('categories', null);
 
         $product = Product::find($product);
         $product->update($data);
 
-        $product->categories()->sync($data['categories']);
+        if(!is_null($categories))
+            $product->categories()->sync($categories);
 
         if($request->hasFile('photos')){
-            $images = $this->imageUpload($request, 'image');
+            $images = $this->imageUpload($request->file('photos'), 'image');
 
             //inserção das imagens/referencia na base
             $product->photos()->createMany($images);
