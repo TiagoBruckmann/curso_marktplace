@@ -55,7 +55,7 @@
 
         <div class="form-group">
         <p>
-            <img src="{{ asset('storage/' . $store->logo) }}" alt="">
+            <img src="{{ asset('storage/' . $store->logo) }}">
         </p>
             <label>Logo da sua loja</label>
             <input type="file" name="logo" class="form-control @error('logo') is-invalid @enderror" >
