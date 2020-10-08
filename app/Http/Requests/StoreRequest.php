@@ -28,8 +28,8 @@ class StoreRequest extends FormRequest
             'description'   => 'required|min:10',
             'phone'         => 'required|min:10|integer',
             'mobile_phone'  => 'required|min:10|integer',
-            'logo'          => 'image'
-        ];
+            'logo'        => 'image'
+        ]; 
     }
 
     public function messages(){

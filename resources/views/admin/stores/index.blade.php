@@ -7,7 +7,7 @@
     @endif
     
     <br><br><br><br>
-    <table class="table table-stiped">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Loja</th>

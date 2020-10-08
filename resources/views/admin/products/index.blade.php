@@ -4,7 +4,7 @@
     <br><br>
     <a href="{{ route('admin.products.create') }}" class="btn btn-lg btn-success">Adicionar produto</a>
     <br><br><br><br>
-    <table class="table table-stiped">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Nome do produto</th>
