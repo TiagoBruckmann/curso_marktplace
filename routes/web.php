@@ -115,9 +115,13 @@ Route::group([ 'middleware' => ['auth'] ], function(){
         */
         Route::resource('stores', 'StoreController');
         Route::resource('products', 'ProductController');
+        Route::resource('categories', 'CategoryController');
+
+
+        Route::post('photos/remove', 'ProductPhotoController@removePhoto')->name('photo.remove');
      });
 });
  
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

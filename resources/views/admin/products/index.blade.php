@@ -21,7 +21,7 @@
                     <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
                     <td>
                         <div class="btn-group">
-                            <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}" class="btn btn-outline-info" style="border=none; padding-rigth="><i class="fas fa-edit"></i></a>
+                            <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}" class="btn btn-outline-info" style="border=none;"><i class="fas fa-edit"></i></a>
                             <form action="{{ route('admin.products.destroy', ['product' => $product->id]) }}" method="post" style="margin-left:10px;">
                                 @csrf
                                 @method("DELETE")

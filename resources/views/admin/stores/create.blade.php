@@ -5,7 +5,7 @@
 @section('content')
     <h1>Criar Loja</h1>
 
-    <form action="{{ route('admin.stores.store') }}" method="post">
+    <form action="{{ route('admin.stores.store') }}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group">
             <label>Nome da loja*</label>
@@ -46,6 +46,21 @@
             
             @error('mobile_phone')
                 <div class="invalid feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <p>
+                <img src="{{ asset('storage/' . $store->logo) }}" alt="">
+            </p>
+
+            <label>Logo da sua loja</label>
+            <input type="file" name="logo" class="form-control @error('logo') is-invalid @enderror" >
+        
+            @error('logo')
+                <div class="invalid-feedback">
                     {{ $message }}
                 </div>
             @enderror

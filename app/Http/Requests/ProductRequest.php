@@ -13,7 +13,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
             'description'   => 'required|min:10',
             'body'          => 'required|min:30',
             'price'         => 'required|numeric',
-            'slug'          => 'required' 
+            'photos'        => 'image'
         ];
     }
 
@@ -36,7 +36,8 @@ class ProductRequest extends FormRequest
         return [
             'required'  => 'este campo é obrigatório',
             'numeric'   => 'Esse campo deve ser do tipo numerico',
-            'min'       => 'Esse campo deve ter no minimo :min caracteres'
+            'min'       => 'Esse campo deve ter no minimo :min caracteres',
+            'image'     => 'O arquivo não é uma imagem valida'
         ];
     }
 
