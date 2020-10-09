@@ -51,8 +51,8 @@
                 </table>
                 <hr>
                 <div class="md-12">
-                    <a href="#" class="btn btn-lg btn-success pull-right">Concluir compra</a>
-                    <a href="{{ route('cart.cancel') }}" class="btn btn-lg btn-danger pull-left">Cancelar compra</a>
+                    <a href="#" class="btn btn-lg btn-success float-right">Concluir compra</a>
+                    <a href="{{ route('cart.cancel') }}" class="btn btn-lg btn-danger float-left">Cancelar compra</a>
                 </div>
             @else
                 <div class="alert alert-warning">Carrinho de compras esta vazio</div>
