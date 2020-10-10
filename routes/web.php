@@ -28,6 +28,11 @@ Route::prefix('cart')->name('cart.')->group(function(){
 
 });
 
+//rotas de checkout para finalização de compras
+Route::prefix('checkout')->name('checkout.')->group(function(){
+    Route::get('/', 'CheckoutController@index')->name('index');
+});
+
 Route::group([ 'middleware' => ['auth'] ], function(){
     Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
     
