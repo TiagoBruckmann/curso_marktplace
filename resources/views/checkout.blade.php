@@ -35,6 +35,10 @@
                         <label>Código de Segurança</label>
                         <input type="text" class="form-control" name="card_cvv">
                     </div>
+
+                    <div class="md-12 installments form-group">
+                        
+                    </div>
                 </div>
 
                 <button class="btn btn-success btn-lg">Efetuar pagamento</button>
@@ -65,8 +69,12 @@
                 PagSeguroDirectPayment.getBrand({
                     cardBin: cardNumber.value.substr(0, 6),
                     success: function(res){
+                        //exibir bandeira do cartão digitado
                         let imgFlag = `<img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/${res.brand.name}.png">`;
                         spanBrand.innerHTML = imgFlag;
+
+                        //exibir parcelas de pagamento
+                        getInstallments(40, res.brand.name);
                     },
                     error: function(err){
                         console.log(err);
@@ -77,6 +85,39 @@
                 });
             }
         });
+
+        function getInstallments(amount, brand) {
+            PagSeguroDirectPayment.getInstallments({
+                amount: amount,
+                brand: brand,
+                maxInstallmentNoInterest: 0,
+                success: function(res) {
+                    let selectInstallments = drawSelectInstallments(res.installments[brand]);
+                    document.querySelector('div.installments').innerHTML = selectInstallments;
+                },
+                error: function(err){
+                    console.log(err);
+                },
+                complete: function(res){
+
+                },
+            })
+        }
+
+        function drawSelectInstallments(installments) {
+		let select = '<label>Opções de Parcelamento:</label>';
+
+		select += '<select class="form-control">';
+
+		for(let l of installments) {
+		    select += `<option value="${l.quantity}|${l.installmentAmount}">${l.quantity}x de ${l.installmentAmount} - Total fica ${l.totalAmount}</option>`;
+		}
+
+
+		select += '</select>';
+
+		return select;
+	}
 
     </script>
 @endsection
