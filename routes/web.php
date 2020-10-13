@@ -31,6 +31,7 @@ Route::prefix('cart')->name('cart.')->group(function(){
 //rotas de checkout para finalização de compras
 Route::prefix('checkout')->name('checkout.')->group(function(){
     Route::get('/', 'CheckoutController@index')->name('index');
+    Route::post('/proccess', 'CheckoutController@proccess')->name('proccess');
 });
 
 Route::group([ 'middleware' => ['auth'] ], function(){
