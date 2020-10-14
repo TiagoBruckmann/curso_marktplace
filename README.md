@@ -22,7 +22,7 @@ nesse projeto usamos a configuração <a href="https://github.com/pagseguro/pags
 
 usando os demais codigos no arquivo .ENV:
 
-PAGSEGURO_ENV = sandbox or production
-PAGSEGURO_EMAIL = tiago@saintec.com.br
-PAGSEGURO_TOKEN_SANDBOX = A06BEA23D28E4DCDBD3E9A14644C9598
+PAGSEGURO_ENV = sandbox or production <br>
+PAGSEGURO_EMAIL = tiago@saintec.com.br <br>
+PAGSEGURO_TOKEN_SANDBOX = A06BEA23D28E4DCDBD3E9A14644C9598 <br>
 PAGSEGURO_CHARSET = UTF-8
