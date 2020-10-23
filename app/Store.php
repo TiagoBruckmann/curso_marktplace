@@ -31,4 +31,10 @@ class Store extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    //hashMany permite varios pedidos por loja
+    public function orders()
+    {
+        return $this->hashMany(UserOrder::class);
+    }
 }
