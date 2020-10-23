@@ -45,7 +45,7 @@
                         <input type="text" class="form-control" name="card_cvv">
                     </div>
 
-                    <div class="md-12 installments form-group">
+                    <div class="col-md-12 installments form-group">
                         
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                 data: data,
                 dataType: 'json',
                 success: function(res){
-                    console.log(res);
+                    alert(res.data.message);
                 }
             });
         }
